@@ -1,38 +1,5 @@
-// import prisma from "@/lib/db";
-// // Get all orders (with user info)
-// export async function GET() {
-//   const orders = await prisma.order.findMany({
-//     include: { user: true },
-//     orderBy: { createdAt: "desc" },
-//   });
-//   return Response.json(orders);
-// }
-
-// // Place a new order
-// export async function POST(req) {
-//   const data = await req.json();
-//   const { name, contact, address, cart, total } = data;
-
-//   // Step 1: create user
-//   const user = await prisma.user.create({
-//     data: { name, contact, address },
-//   });
-
-//   // Step 2: create order
-//   const order = await prisma.order.create({
-//     data: {
-//       userId: user.id,
-//       total,
-//       products: cart,
-//     },
-//   });
-
-//   return Response.json({ success: true, order });
-// }
-
-
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient, Order, User } from "@prisma/client";
+import { order, PrismaClient, user  } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
@@ -44,7 +11,7 @@ type CartItem = {
 };
 
 export async function GET() {
-  const orders: (Order & { user: User | null })[] = await prisma.order.findMany({
+  const orders: (order & { user: user | null })[] = await prisma.order.findMany({
     include: { user: true },
     orderBy: { createdAt: "desc" },
   });

@@ -102,7 +102,7 @@ export default function Home() {
                 {/* Logo / Title */}
                 <div className="flex flex-col">
                     <h1 className="text-3xl md:text-4xl font-extrabold tracking-wide drop-shadow-lg">
-                        🎇 KUKI'S KRAKER'S
+                        {"KUKI'S KRAKER'S"}
                     </h1>
                     <p className="text-sm md:text-base font-light text-white/80">
                         Spark the joy this festive season!
@@ -134,7 +134,7 @@ export default function Home() {
                     {/* Text Side */}
                     <div className="flex-1 relative z-10 text-center md:text-left">
                         <h2 className="text-4xl md:text-5xl font-extrabold text-orange-700 mb-4">
-                         Free Home Delivery
+                            Free Home Delivery
                         </h2>
                         <p className="text-lg md:text-xl text-gray-800 mb-2">
                             <span className="font-semibold">From Dahisar to Andheri</span>
@@ -177,11 +177,9 @@ export default function Home() {
                                     onClick={() => hasVideo && setSelectedVideo(product.youtubeUrl)}
                                 >
                                     {product.image ? (
-                                        <img
-                                            src={product.image}
-                                            alt={product.name}
-                                            className="h-40 w-full object-cover rounded-xl transform group-hover:scale-105 transition-transform duration-300"
-                                        />
+                                        <div className="relative w-full h-64">
+                                            <Image src={product.image} alt={product.name} fill className="object-cover rounded-lg" />
+                                        </div>
                                     ) : (
                                         <div className="h-40 w-full bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-sm">
                                             No Image

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type CartItem = {
   id: number;
@@ -11,7 +11,7 @@ type CartItem = {
 };
 
 export default function Checkout() {
-  const searchParams = useSearchParams();
+
   const router = useRouter();
   // const cartParam = searchParams.get("cart");
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -72,9 +72,11 @@ ${cart.map(item => `• ${item.name} x${item.quantity} = ₹${item.offerRate * i
       setAddress("");
       alert("✅ Order placed successfully!");
       router.push("/");
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Order error:", err);
-      alert(err.message || "Failed to place order. Please try again.");
+      const message = err instanceof Error ? err.message : "Failed to place order. Please try again.";
+
+      alert(message);
     } finally {
       setLoading(false);
     }
@@ -161,8 +163,8 @@ ${cart.map(item => `• ${item.name} x${item.quantity} = ₹${item.offerRate * i
             onClick={handleOrder}
             disabled={loading || cart.length === 0}
             className={`w-1/2 py-3 rounded-full font-semibold shadow-md transition ${loading
-                ? "bg-gray-400 text-white"
-                : "bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white"
+              ? "bg-gray-400 text-white"
+              : "bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white"
               }`}
           >
             {loading ? "Placing Order..." : "Place Order via WhatsApp"}
