@@ -1,14 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { order, PrismaClient, user  } from "@prisma/client";
+import { order, PrismaClient, user } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 type CartItem = {
   id: number;
   name: string;
-  price: number;
+  offerRate?: number;
+  price?: number;
   quantity: number;
 };
+
+function unitPrice(item: CartItem): number {
+  return Number(item.offerRate ?? item.price ?? 0);
+}
 
 export async function GET() {
   const orders: (order & { user: user | null })[] = await prisma.order.findMany({
@@ -32,28 +37,31 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid data" }, { status: 400 });
     }
 
-    // 🧍‍♂️ Create or find existing user
-    let user = await prisma.user.findFirst({
+    let existingUser = await prisma.user.findFirst({
       where: { contact },
     });
 
-    if (!user) {
-      user = await prisma.user.create({
+    if (!existingUser) {
+      existingUser = await prisma.user.create({
         data: { name, contact, address },
       });
     }
 
-    // 🧮 Calculate total
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const total = cart.reduce(
+      (sum, item) => sum + unitPrice(item) * item.quantity,
+      0
+    );
 
-    // 🔍 Check and update product quantities
     for (const item of cart) {
       const product = await prisma.product.findUnique({
         where: { id: item.id },
       });
 
       if (!product) {
-        return NextResponse.json({ error: `Product ${item.name} not found.` }, { status: 404 });
+        return NextResponse.json(
+          { error: `Product ${item.name} not found.` },
+          { status: 404 }
+        );
       }
 
       if ((product.quantity ?? 0) < item.quantity) {
@@ -63,7 +71,6 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      // ✅ Deduct quantity
       await prisma.product.update({
         where: { id: item.id },
         data: {
@@ -74,16 +81,15 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // 💾 Create order
-    const order = await prisma.order.create({
+    const createdOrder = await prisma.order.create({
       data: {
-        userId: user.id,
+        userId: existingUser.id,
         total,
         products: cart,
       },
     });
 
-    return NextResponse.json({ success: true, order });
+    return NextResponse.json({ success: true, order: createdOrder });
   } catch (err) {
     console.error("Order error:", err);
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
