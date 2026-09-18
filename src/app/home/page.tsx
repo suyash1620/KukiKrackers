@@ -163,8 +163,8 @@ export default function Home() {
       <header className="sticky top-0 z-40 border-b border-gold/20 bg-navy-deep/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <div className="min-w-0">
-            <h1 className="font-display gold-text truncate text-xl font-bold tracking-wide sm:text-2xl md:text-3xl">
-              Kuki&apos;s Krakers
+            <h1 className="font-display gold-text truncate text-sm font-bold tracking-wide sm:text-lg md:text-2xl lg:text-3xl">
+              KUKI&apos;S KRAKERS &amp; FIREWORKS
             </h1>
             <p className="truncate text-[11px] uppercase tracking-[0.18em] text-cream/70 sm:text-xs">
               Safe &amp; Sparkling Fun
@@ -226,7 +226,7 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-3xl border border-gold/30 shadow-2xl shadow-navy-deep/50">
               <Image
                 src="/pampletposter.jpg"
-                alt="Kuki's Krakers Happy Diwali poster"
+                alt="Kuki's Krakers & Fireworks Happy Diwali poster"
                 width={640}
                 height={900}
                 className="h-auto w-full object-cover"
@@ -480,7 +480,7 @@ export default function Home() {
       )}
 
       <footer className="border-t border-white/10 px-4 py-8 text-center text-sm text-cream/50">
-        <p className="font-display text-gold/80">Kuki&apos;s Krakers</p>
+        <p className="font-display text-gold/80">KUKI&apos;S KRAKERS &amp; FIREWORKS</p>
         <p className="mt-1">Safe &amp; Sparkling Fun · Festival of Lights</p>
         <p className="mt-2">
           {PHONES.map((p, i) => (

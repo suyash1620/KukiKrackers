@@ -124,7 +124,7 @@ export default function Checkout() {
       if (!res.ok) throw new Error(result.error || "Failed to create order");
 
       const orderDetails = `
-*🧨 New Order — Kuki's Krakers*
+*🧨 New Order — KUKI'S KRAKERS & FIREWORKS*
 👤 Name: ${name.trim()}
 📞 Contact: ${contact.trim()}
 🏠 Address: ${address.trim()}
