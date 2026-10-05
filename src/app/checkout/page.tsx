@@ -124,7 +124,7 @@ export default function Checkout() {
       if (!res.ok) throw new Error(result.error || "Failed to create order");
 
       const orderDetails = `
-*🧨 New Order — KUKI'S KRAKERS & FIREWORKS*
+*🧨 New Order — KUKI'S FIRECRACKERS & FIREWORKS*
 👤 Name: ${name.trim()}
 📞 Contact: ${contact.trim()}
 🏠 Address: ${address.trim()}
@@ -162,74 +162,77 @@ ${cart
   };
 
   return (
-    <div className="festive-bg min-h-screen px-4 py-6 sm:py-10">
+    <div className="page-ivory min-h-screen px-4 py-6 sm:py-10">
       <div className="mx-auto w-full max-w-xl">
         <Link
           href="/"
-          className="mb-4 inline-flex items-center gap-1 text-sm text-cream/70 transition hover:text-gold"
+          className="mb-4 inline-flex items-center gap-1 text-sm text-muted transition hover:text-navy"
         >
           ← Back to shop
         </Link>
 
-        <div className="rounded-3xl border border-gold/25 bg-cream p-5 shadow-2xl shadow-navy-deep/40 sm:p-8">
-          <h1 className="font-display gold-text mb-1 text-center text-2xl font-bold sm:text-3xl">
+        <div className="rounded-3xl border border-gold/30 bg-white p-5 shadow-xl sm:p-8">
+          <p className="mb-1 text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
+            KUKI&apos;S FIRECRACKERS &amp; FIREWORKS
+          </p>
+          <h1 className="font-display mb-1 text-center text-2xl font-bold text-navy sm:text-3xl">
             Checkout
           </h1>
-          <p className="mb-6 text-center text-sm text-navy/60">
+          <p className="mb-6 text-center text-sm text-muted">
             Review your cart &amp; place order via WhatsApp
           </p>
 
           {/* Customer Details */}
           <div className="mb-6 space-y-4">
             <div>
-              <label className="mb-1 block text-sm font-semibold text-navy-deep">Name</label>
+              <label className="mb-1 block text-sm font-semibold text-navy">Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className={`w-full rounded-xl border bg-white p-3 text-navy-deep outline-none transition focus:border-gold ${
-                  errors.name ? "border-burst" : "border-navy/15"
+                className={`w-full rounded-xl border bg-ivory p-3 text-charcoal outline-none transition focus:border-gold ${
+                  errors.name ? "border-maroon" : "border-navy/15"
                 }`}
                 placeholder="Enter your full name"
                 autoComplete="name"
               />
-              {errors.name && <p className="mt-1 text-xs text-burst">{errors.name}</p>}
+              {errors.name && <p className="mt-1 text-xs text-maroon">{errors.name}</p>}
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-semibold text-navy-deep">Contact</label>
+              <label className="mb-1 block text-sm font-semibold text-navy">Contact</label>
               <input
                 type="tel"
                 inputMode="numeric"
                 maxLength={10}
                 value={contact}
                 onChange={(e) => setContact(e.target.value.replace(/\D/g, "").slice(0, 10))}
-                className={`w-full rounded-xl border bg-white p-3 text-navy-deep outline-none transition focus:border-gold ${
-                  errors.contact ? "border-burst" : "border-navy/15"
+                className={`w-full rounded-xl border bg-ivory p-3 text-charcoal outline-none transition focus:border-gold ${
+                  errors.contact ? "border-maroon" : "border-navy/15"
                 }`}
                 placeholder="10-digit mobile number"
                 autoComplete="tel"
               />
-              {errors.contact && <p className="mt-1 text-xs text-burst">{errors.contact}</p>}
+              {errors.contact && <p className="mt-1 text-xs text-maroon">{errors.contact}</p>}
             </div>
 
             <div>
-              <label className="mb-1 block text-sm font-semibold text-navy-deep">Address</label>
+              <label className="mb-1 block text-sm font-semibold text-navy">Address</label>
               <textarea
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className={`w-full rounded-xl border bg-white p-3 text-navy-deep outline-none transition focus:border-gold ${
-                  errors.address ? "border-burst" : "border-navy/15"
+                className={`w-full rounded-xl border bg-ivory p-3 text-charcoal outline-none transition focus:border-gold ${
+                  errors.address ? "border-maroon" : "border-navy/15"
                 }`}
                 rows={3}
                 placeholder="Full delivery address (landmark helps)"
                 autoComplete="street-address"
               />
-              {errors.address && <p className="mt-1 text-xs text-burst">{errors.address}</p>}
+              {errors.address && <p className="mt-1 text-xs text-maroon">{errors.address}</p>}
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-semibold text-navy-deep">
+              <label className="mb-2 block text-sm font-semibold text-navy">
                 Send order on WhatsApp to
               </label>
               <div className="flex flex-col gap-2 sm:flex-row">
@@ -238,8 +241,8 @@ ${cart
                     key={opt.wa}
                     className={`flex flex-1 cursor-pointer items-center gap-2 rounded-xl border px-3 py-2.5 text-sm transition ${
                       whatsappTo === opt.wa
-                        ? "border-gold bg-gold/15 font-semibold text-navy-deep"
-                        : "border-navy/15 bg-white text-navy/80"
+                        ? "border-gold bg-gold/15 font-semibold text-navy"
+                        : "border-navy/15 bg-ivory text-muted"
                     }`}
                   >
                     <input
@@ -257,14 +260,14 @@ ${cart
           </div>
 
           {/* Cart Summary */}
-          <div className="mb-6 rounded-2xl border border-gold/20 bg-navy/[0.03] p-4">
-            <h2 className="mb-3 font-display text-lg font-semibold text-navy-deep">
+          <div className="mb-6 rounded-2xl border border-gold/20 bg-ivory p-4">
+            <h2 className="mb-3 font-display text-lg font-semibold text-navy">
               Cart Summary
             </h2>
             {cart.length === 0 ? (
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-muted">
                 No items in cart.{" "}
-                <Link href="/" className="font-medium text-amber-700 underline">
+                <Link href="/" className="font-medium text-cta underline">
                   Browse products
                 </Link>
               </p>
@@ -277,38 +280,38 @@ ${cart
                       className="flex flex-col gap-2 border-b border-navy/10 pb-3 last:border-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between"
                     >
                       <div className="min-w-0 flex-1">
-                        <p className="truncate font-medium text-navy-deep">{item.name}</p>
-                        <p className="text-xs text-slate-500">₹{item.offerRate} each</p>
+                        <p className="truncate font-medium text-charcoal">{item.name}</p>
+                        <p className="text-xs text-muted">₹{item.offerRate} each</p>
                       </div>
                       <div className="flex items-center justify-between gap-3 sm:justify-end">
                         <div className="flex items-center gap-2 rounded-full border border-navy/10 bg-white px-1.5 py-1">
                           <button
                             type="button"
                             onClick={() => updateQty(item.id, -1)}
-                            className="flex h-9 w-9 items-center justify-center rounded-full bg-burst text-white"
+                            className="flex h-9 w-9 items-center justify-center rounded-full bg-maroon text-white"
                             aria-label="Decrease"
                           >
                             –
                           </button>
-                          <span className="min-w-6 text-center font-semibold text-navy-deep">
+                          <span className="min-w-6 text-center font-semibold text-navy">
                             {item.quantity}
                           </span>
                           <button
                             type="button"
                             onClick={() => updateQty(item.id, 1)}
-                            className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500 text-white"
+                            className="flex h-9 w-9 items-center justify-center rounded-full bg-navy-mid text-white"
                             aria-label="Increase"
                           >
                             +
                           </button>
                         </div>
-                        <span className="min-w-[4.5rem] text-right font-semibold text-navy-deep">
+                        <span className="min-w-[4.5rem] text-right font-semibold text-navy">
                           ₹{item.offerRate * item.quantity}
                         </span>
                         <button
                           type="button"
                           onClick={() => removeItem(item.id)}
-                          className="text-xs text-slate-400 hover:text-burst"
+                          className="text-xs text-muted hover:text-maroon"
                           aria-label={`Remove ${item.name}`}
                         >
                           Remove
@@ -319,9 +322,9 @@ ${cart
                 </ul>
 
                 <hr className="my-3 border-gold/30" />
-                <div className="flex justify-between text-lg font-bold text-navy-deep">
+                <div className="flex justify-between text-lg font-bold text-navy">
                   <span>Total</span>
-                  <span className="text-amber-700">₹{total}</span>
+                  <span>₹{total}</span>
                 </div>
               </>
             )}
@@ -331,7 +334,7 @@ ${cart
             <button
               type="button"
               onClick={() => router.push("/")}
-              className="w-full rounded-full border-2 border-gold/50 bg-white py-3 font-semibold text-navy-deep transition hover:bg-gold-soft sm:w-1/2"
+              className="gold-outline w-full rounded-full py-3 sm:w-1/2"
             >
               Add More
             </button>
@@ -343,7 +346,7 @@ ${cart
               className={`w-full rounded-full py-3 font-semibold shadow-md transition sm:w-1/2 ${
                 loading || cart.length === 0
                   ? "cursor-not-allowed bg-slate-300 text-slate-500"
-                  : "gold-btn"
+                  : "cta-btn"
               }`}
             >
               {loading ? "Placing Order..." : "Place Order via WhatsApp"}

@@ -22,14 +22,14 @@ const script = Great_Vibes({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: "KUKI'S KRAKERS & FIREWORKS | Safe & Sparkling Fun — Order Online",
+  title: "KUKI'S FIRECRACKERS & FIREWORKS | Safe & Sparkling Fun — Order Online",
   description:
-    "Order Diwali crackers online from KUKI'S KRAKERS & FIREWORKS. Free home delivery from Dahisar to Andheri. Safe & sparkling fun — Festival of Lights.",
+    "Order Diwali crackers online from KUKI'S FIRECRACKERS & FIREWORKS. Free home delivery from Dahisar to Andheri. Safe & sparkling fun — Festival of Lights.",
   openGraph: {
-    title: "KUKI'S KRAKERS & FIREWORKS | Happy Diwali",
+    title: "KUKI'S FIRECRACKERS & FIREWORKS | Happy Diwali",
     description:
       "Safe & Sparkling Fun. Free delivery Dahisar to Andheri. Order crackers online.",
-    images: ["/pampletposter.jpg"],
+    images: ["/hero-family.jpg"],
   },
 };
 

@@ -158,28 +158,27 @@ export default function Home() {
   }, [products]);
 
   return (
-    <div className="festive-bg min-h-screen pb-safe-cart">
-      {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-gold/20 bg-navy-deep/90 backdrop-blur-md">
+    <div className="page-ivory min-h-screen pb-safe-cart">
+      <header className="sticky top-0 z-40 border-b border-gold/20 bg-navy">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
           <div className="min-w-0">
-            <h1 className="font-display gold-text truncate text-sm font-bold tracking-wide sm:text-lg md:text-2xl lg:text-3xl">
-              KUKI&apos;S KRAKERS &amp; FIREWORKS
+            <h1 className="font-display gold-text truncate text-sm font-bold tracking-wide sm:text-lg md:text-2xl">
+              KUKI&apos;S FIRECRACKERS &amp; FIREWORKS
             </h1>
-            <p className="truncate text-[11px] uppercase tracking-[0.18em] text-cream/70 sm:text-xs">
+            <p className="truncate text-[11px] uppercase tracking-[0.18em] text-white/75 sm:text-xs">
               Safe &amp; Sparkling Fun
             </p>
           </div>
 
           <Link
             href="/checkout"
-            className="relative flex shrink-0 items-center gap-2 rounded-full bg-cream px-3 py-2 text-sm font-semibold text-navy-deep shadow-lg transition hover:bg-gold-soft sm:px-5"
+            className="relative flex shrink-0 items-center gap-2 rounded-full bg-white px-3 py-2 text-sm font-semibold text-navy shadow-lg transition hover:bg-gold-soft sm:px-5"
             aria-label={`Cart with ${cartCount} items`}
           >
             <span aria-hidden>🛒</span>
             <span className="hidden sm:inline">Cart</span>
             {cartCount > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-burst px-1.5 text-[10px] font-bold text-white">
+              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-cta px-1.5 text-[10px] font-bold text-white">
                 {cartCount}
               </span>
             )}
@@ -187,94 +186,78 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative mx-auto max-w-7xl overflow-hidden px-4 pb-6 pt-6 sm:px-6 sm:pb-10 sm:pt-8">
-        <div className="relative grid items-center gap-6 lg:grid-cols-2 lg:gap-10">
-          <div className="relative z-10 text-center lg:text-left">
-            <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-gold-soft animate-shimmer">
+      <section className="hero-navy overflow-hidden">
+        <div className="mx-auto grid max-w-7xl items-center gap-0 lg:grid-cols-[1fr_auto]">
+          <div className="relative z-10 px-4 py-8 text-center sm:px-6 sm:py-12 lg:py-16 lg:text-left">
+            <p className="mb-2 text-xs font-medium uppercase tracking-[0.25em] text-gold">
               Festival of Lights
             </p>
             <h2 className="font-script gold-text text-5xl leading-none sm:text-6xl md:text-7xl">
               Happy Diwali
             </h2>
-            <p className="mt-4 max-w-md text-base text-cream/85 sm:text-lg mx-auto lg:mx-0">
+            <p className="mx-auto mt-4 max-w-md text-base text-white/90 sm:text-lg lg:mx-0">
               Free home delivery from{" "}
               <span className="font-semibold text-gold">Dahisar to Andheri</span>.
               Order online — offer valid till stock lasts.
             </p>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-              <a href="#products" className="gold-btn animate-pulse-glow rounded-full px-6 py-3 text-sm sm:text-base">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+              <a href="#products" className="cta-btn rounded-full px-6 py-3 text-sm sm:text-base">
                 Shop Now
               </a>
               <a
                 href={`tel:${PHONES[0].label}`}
-                className="rounded-full border border-gold/40 bg-white/5 px-5 py-3 text-sm font-medium text-cream backdrop-blur transition hover:border-gold hover:bg-white/10"
+                className="gold-outline rounded-full px-5 py-3 text-sm"
               >
                 Call {PHONES[0].label}
               </a>
             </div>
-            <p className="mt-4 text-sm text-cream/60">
+            <p className="mt-4 text-sm text-white/60">
               Also:{" "}
-              <a href={`tel:${PHONES[1].label}`} className="text-gold-soft underline-offset-2 hover:underline">
+              <a href={`tel:${PHONES[1].label}`} className="text-gold underline-offset-2 hover:underline">
                 {PHONES[1].label}
               </a>
             </p>
           </div>
 
-          <div className="relative mx-auto w-full max-w-md animate-float lg:max-w-lg">
-            <div className="absolute -inset-3 rounded-[2rem] bg-gold/20 blur-2xl" />
-            <div className="relative overflow-hidden rounded-3xl border border-gold/30 shadow-2xl shadow-navy-deep/50">
-              <Image
-                src="/pampletposter.jpg"
-                alt="Kuki's Krakers & Fireworks Happy Diwali poster"
-                width={640}
-                height={900}
-                className="h-auto w-full object-cover"
-                priority
-              />
-            </div>
-            <span className="absolute -bottom-2 -right-2 rotate-6 rounded-full bg-burst px-3 py-2 text-[10px] font-bold uppercase leading-tight text-white shadow-lg sm:text-xs">
-              Offer till
-              <br />
-              stock lasts
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Delivery strip */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col items-center gap-4 rounded-2xl border border-gold/20 bg-navy-mid/40 px-4 py-4 backdrop-blur sm:flex-row sm:justify-between sm:px-6">
-          <div className="text-center sm:text-left">
-            <h3 className="font-display text-lg font-semibold text-gold sm:text-xl">
-              Free Home Delivery
-            </h3>
-            <p className="text-sm text-cream/75">Dahisar → Andheri · WhatsApp orders welcome</p>
-          </div>
-          <div className="relative h-16 w-28 overflow-hidden rounded-xl sm:h-20 sm:w-36">
+          <div className="hero-photo-wrap flex w-full items-center justify-center lg:h-full">
             <Image
-              src="/images/bgImage/load.jpg"
-              alt="Delivery"
-              fill
-              className="object-cover"
-              sizes="144px"
+              src="/hero-family.jpg"
+              alt="Family celebrating Diwali with Kuki's Firecrackers and Fireworks"
+              width={576}
+              height={1024}
+              className="h-auto w-full object-contain lg:max-h-[90vh] lg:w-auto"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
             />
           </div>
         </div>
       </section>
 
-      {/* Categories + Products */}
-      <section id="products" className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
-        <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
+      <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+        <div className="flex flex-col items-center justify-between gap-3 rounded-2xl bg-maroon px-5 py-5 text-center sm:flex-row sm:text-left">
           <div>
-            <h2 className="font-display text-2xl font-semibold text-cream sm:text-3xl">
-              Our Crackers
-            </h2>
-            <p className="text-sm text-cream/60">Tap a product image to watch a demo video</p>
+            <h3 className="font-display text-lg font-semibold text-gold sm:text-xl">
+              Free Home Delivery
+            </h3>
+            <p className="mt-1 text-sm text-ivory">
+              Dahisar → Andheri · WhatsApp orders welcome · Offer till stock lasts
+            </p>
           </div>
+          <a href="#products" className="cta-btn shrink-0 rounded-full px-5 py-2.5 text-sm">
+            Shop Now
+          </a>
+        </div>
+      </section>
+
+      <section id="products" className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 sm:pb-12">
+        <div className="mb-5">
+          <h2 className="font-display text-2xl font-semibold text-navy sm:text-3xl">
+            Our Crackers
+          </h2>
+          <p className="text-sm text-muted">Tap a product image to watch a demo video</p>
         </div>
 
-        <div className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 scrollbar-none sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
+        <div className="-mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0">
           {availableCategories.map((c) => (
             <button
               key={c}
@@ -282,8 +265,8 @@ export default function Home() {
               onClick={() => setCategory(c)}
               className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition ${
                 category === c
-                  ? "gold-btn"
-                  : "border border-white/15 bg-white/5 text-cream/80 hover:border-gold/40 hover:text-cream"
+                  ? "bg-navy text-gold"
+                  : "border border-gold/30 bg-cream text-charcoal hover:border-gold"
               }`}
             >
               {c}
@@ -294,10 +277,7 @@ export default function Home() {
         {loading ? (
           <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
             {Array.from({ length: 8 }).map((_, i) => (
-              <div
-                key={i}
-                className="overflow-hidden rounded-2xl border border-white/10 bg-cream/95 p-3"
-              >
+              <div key={i} className="overflow-hidden rounded-2xl border border-gold/15 bg-white p-3">
                 <div className="skeleton mb-3 h-36 rounded-xl sm:h-44" />
                 <div className="skeleton mb-2 h-4 w-3/4 rounded" />
                 <div className="skeleton mb-3 h-4 w-1/2 rounded" />
@@ -306,7 +286,7 @@ export default function Home() {
             ))}
           </div>
         ) : filteredProducts.length === 0 ? (
-          <p className="rounded-2xl border border-white/10 bg-white/5 px-4 py-10 text-center text-cream/70">
+          <p className="rounded-2xl border border-gold/20 bg-cream px-4 py-10 text-center text-muted">
             No products in this category yet. Try another filter.
           </p>
         ) : (
@@ -315,11 +295,15 @@ export default function Home() {
               const outOfStock = product.quantity === 0;
               const hasVideo = !!product.youtubeUrl;
               const qtyInCart = getCartQuantity(product.id);
+              const hasDiscount = product.mrpRate > product.offerRate;
+              const offPct = hasDiscount
+                ? Math.round(((product.mrpRate - product.offerRate) / product.mrpRate) * 100)
+                : 0;
 
               return (
                 <article
                   key={product.id}
-                  className={`group flex flex-col justify-between rounded-2xl border border-gold/15 bg-cream p-3 shadow-lg shadow-navy-deep/20 transition duration-300 hover:border-gold/50 hover:shadow-gold/10 sm:p-4 ${
+                  className={`group flex flex-col justify-between rounded-2xl border border-gold/20 bg-white p-3 shadow-sm transition duration-300 hover:border-gold hover:shadow-md sm:p-4 ${
                     outOfStock ? "opacity-70" : ""
                   }`}
                 >
@@ -340,40 +324,44 @@ export default function Home() {
                           src={product.image}
                           alt={product.name || "Product"}
                           fill
-                          className="object-cover rounded-lg transition duration-300 group-hover:scale-[1.03]"
+                          className="rounded-lg object-cover transition duration-300 group-hover:scale-[1.03]"
                           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                         />
                       </div>
                     ) : (
-                      <div className="flex h-36 w-full items-center justify-center rounded-xl bg-slate-200 text-sm text-slate-500 sm:h-44">
+                      <div className="flex h-36 w-full items-center justify-center rounded-xl bg-cream text-sm text-muted sm:h-44">
                         No Image
                       </div>
                     )}
 
+                    {hasDiscount && !outOfStock && (
+                      <span className="absolute left-2 top-2 rounded-full bg-cta px-2 py-0.5 text-[10px] font-bold text-white sm:text-xs">
+                        {offPct}% OFF
+                      </span>
+                    )}
+
                     {outOfStock && (
-                      <span className="absolute inset-0 flex items-center justify-center rounded-xl bg-navy-deep/70 text-sm font-bold text-cream">
+                      <span className="absolute inset-0 flex items-center justify-center rounded-xl bg-navy/70 text-sm font-bold text-white">
                         Out of Stock
                       </span>
                     )}
 
                     {hasVideo && !outOfStock && (
-                      <span className="absolute bottom-2 right-2 rounded-lg bg-burst px-2 py-1 text-[10px] font-semibold text-white shadow-md sm:text-xs">
+                      <span className="absolute bottom-2 right-2 rounded-lg bg-navy px-2 py-1 text-[10px] font-semibold text-white shadow-md sm:text-xs">
                         ▶ Watch
                       </span>
                     )}
                   </div>
 
                   <div className="mt-2.5 sm:mt-3">
-                    <h3 className="line-clamp-2 text-sm font-bold text-navy-deep sm:text-base">
+                    <h3 className="line-clamp-2 text-sm font-bold text-charcoal sm:text-base">
                       {product.name}
                     </h3>
                     <div className="my-1.5 flex flex-wrap items-center gap-1.5 sm:my-2 sm:gap-2">
-                      {product.mrpRate > product.offerRate && (
-                        <span className="text-xs text-slate-500 line-through">
-                          ₹{product.mrpRate}
-                        </span>
+                      {hasDiscount && (
+                        <span className="text-xs text-muted line-through">₹{product.mrpRate}</span>
                       )}
-                      <span className="text-base font-bold text-amber-700 sm:text-lg">
+                      <span className="text-base font-bold text-navy sm:text-lg">
                         ₹{product.offerRate}
                       </span>
                     </div>
@@ -382,20 +370,20 @@ export default function Home() {
                   {!outOfStock && (
                     <div className="mt-auto pt-1">
                       {qtyInCart > 0 ? (
-                        <div className="flex items-center justify-between rounded-full border border-navy/10 bg-white px-2 py-1.5 shadow-inner sm:px-3 sm:py-2">
+                        <div className="flex items-center justify-between rounded-full border border-navy/10 bg-ivory px-2 py-1.5 sm:px-3 sm:py-2">
                           <button
                             type="button"
                             onClick={() => removeFromCart(product)}
-                            className="flex h-10 w-10 items-center justify-center rounded-full bg-burst text-lg text-white transition hover:brightness-110 sm:h-9 sm:w-9"
+                            className="flex h-10 w-10 items-center justify-center rounded-full bg-maroon text-lg text-white sm:h-9 sm:w-9"
                             aria-label="Decrease quantity"
                           >
                             –
                           </button>
-                          <span className="font-semibold text-navy-deep">{qtyInCart}</span>
+                          <span className="font-semibold text-navy">{qtyInCart}</span>
                           <button
                             type="button"
                             onClick={() => addToCart(product)}
-                            className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-lg text-white transition hover:bg-emerald-600 sm:h-9 sm:w-9"
+                            className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-mid text-lg text-white sm:h-9 sm:w-9"
                             aria-label="Increase quantity"
                           >
                             +
@@ -405,7 +393,7 @@ export default function Home() {
                         <button
                           type="button"
                           onClick={() => addToCart(product)}
-                          className="gold-btn w-full rounded-full py-2.5 text-sm sm:py-2"
+                          className="navy-btn w-full rounded-full py-2.5 text-sm sm:py-2"
                         >
                           Add to Cart
                         </button>
@@ -419,14 +407,14 @@ export default function Home() {
         )}
       </section>
 
-      {/* Sticky mobile cart bar */}
       {cartCount > 0 && (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gold/30 bg-navy-deep/95 p-3 backdrop-blur-md md:hidden"
+        <div
+          className="fixed inset-x-0 bottom-0 z-40 border-t border-gold/30 bg-navy p-3 md:hidden"
           style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
         >
           <Link
             href="/checkout"
-            className="gold-btn flex w-full items-center justify-between rounded-full px-5 py-3.5 text-sm"
+            className="cta-btn flex w-full items-center justify-between rounded-full px-5 py-3.5 text-sm"
           >
             <span>View Cart · {cartCount} items</span>
             <span>₹{cartTotal}</span>
@@ -434,7 +422,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* Floating WhatsApp */}
       <a
         href={`https://wa.me/${PHONES[0].wa}?text=${encodeURIComponent(
           "Hi! I'd like to ask about crackers / place an order."
@@ -450,7 +437,6 @@ export default function Home() {
         </svg>
       </a>
 
-      {/* YouTube Modal */}
       {selectedVideo && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-0 sm:p-4"
@@ -463,7 +449,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setSelectedVideo(null)}
-              className="absolute right-3 top-3 z-10 rounded-full bg-white/90 px-3 py-1.5 text-sm font-bold text-navy-deep"
+              className="absolute right-3 top-3 z-10 rounded-full bg-white/90 px-3 py-1.5 text-sm font-bold text-navy"
             >
               ✕ Close
             </button>
@@ -479,14 +465,14 @@ export default function Home() {
         </div>
       )}
 
-      <footer className="border-t border-white/10 px-4 py-8 text-center text-sm text-cream/50">
-        <p className="font-display text-gold/80">KUKI&apos;S KRAKERS &amp; FIREWORKS</p>
-        <p className="mt-1">Safe &amp; Sparkling Fun · Festival of Lights</p>
-        <p className="mt-2">
+      <footer className="bg-navy px-4 py-8 text-center text-sm">
+        <p className="font-display text-gold">KUKI&apos;S FIRECRACKERS &amp; FIREWORKS</p>
+        <p className="mt-1 text-white/80">Safe &amp; Sparkling Fun · Festival of Lights</p>
+        <p className="mt-2 text-muted">
           {PHONES.map((p, i) => (
             <span key={p.label}>
               {i > 0 && " / "}
-              <a href={`tel:${p.label}`} className="hover:text-gold">
+              <a href={`tel:${p.label}`} className="text-white/80 hover:text-gold">
                 {p.label}
               </a>
             </span>
